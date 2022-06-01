@@ -27,11 +27,11 @@ var (
 
 func StringSum(input string) (output string, err error) {
 	if len(input) == 0 {
-		return "", fmt.Errorf("Error: %v", errorEmptyInput)
+		return "", fmt.Errorf("%v", errorEmptyInput)
 	} else {
 		re := regexp.MustCompile("[-+]?[0-9]*\\.?[0-9]+")
 		if len(re.FindAllString(input, -1)) != 2 {
-			return "", fmt.Errorf("Error: %v", errorNotTwoOperands)
+			return "", fmt.Errorf("%v", errorNotTwoOperands)
 		} else {
 			sum := 0
 			for _, i := range re.FindAllString(input, -1) {
