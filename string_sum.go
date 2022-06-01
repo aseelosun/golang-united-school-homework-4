@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 //use these errors as appropriate, wrapping them with fmt.Errorf function
@@ -26,6 +27,7 @@ var (
 // Use the errors defined above as described, again wrapping into fmt.Errorf
 
 func StringSum(input string) (output string, err error) {
+	input = strings.ReplaceAll(input, " ", "")
 	if len(input) == 0 {
 		return "", fmt.Errorf("%v", errorEmptyInput)
 	} else {
