@@ -29,13 +29,17 @@ func StringSum(input string) (output string, err error) {
 	if len(input) == 0 {
 		return "", fmt.Errorf("Error: %v", errorEmptyInput)
 	} else {
-		re := regexp.MustCompile("[0-9]+")
-		fmt.Println(re.FindAllString(input, -1))
-		sum := 0
-		for _, i := range re.FindAllString(input, -1) {
-			number, _ := strconv.Atoi(i)
-			sum += number
+		re := regexp.MustCompile("[-+]?[0-9]*\\.?[0-9]+")
+		if len(re.FindAllString(input, -1)) != 2 {
+			return "", fmt.Errorf("Error: %v", errorNotTwoOperands)
+		} else {
+			sum := 0
+			for _, i := range re.FindAllString(input, -1) {
+				number, _ := strconv.Atoi(i)
+				sum += number
+			}
+			return strconv.Itoa(sum), nil
 		}
-		return strconv.Itoa(sum), nil
+
 	}
 }
